@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate')
 const cardRouter = require('./routes/cards');
@@ -21,12 +22,39 @@ mongoose.connect(DB_URL, {
   useNewUrlParser: true,
 });
 
+const db = mongoose.connection;
+
+db.on('error', (error) => {
+  console.error('Ошибка подключения к MongoDB:', error);
+});
+
+db.once('open', () => {
+  console.log('Успешное подключение к MongoDB');
+});
+
 const app = express();
+
+app.use(cors({
+  origin: [
+    'http://localhost:3001',
+    'https://localhost:3001',
+    'http://interactiveservice.nomoredomainsrocks.ru',
+    'https://interactiveservice.nomoredomainsrocks.ru',
+    'https://api.interactiveservice.nomoredomainsrocks.ru'],
+}));
+
 
 app.use(helmet());
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(express.json());
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 
 app.use(requestLogger);
 

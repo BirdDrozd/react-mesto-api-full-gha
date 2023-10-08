@@ -14,4 +14,3 @@ IP 158.160.58.198
 Frontend https://interactiveservice.nomoredomainsrocks.ru
 
 Backend https://api.interactiveservice.nomoredomainsrocks.ru
-

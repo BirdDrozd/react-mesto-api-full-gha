@@ -4,13 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "./node_modules/.bin/pm2 start backend",
     "dev": "nodemon app.js",
     "lint": "npx eslint . --fix"
   },
   "author": "Vladislav Drozdov",
   "license": "ISC",
   "dependencies": {
+    "pm2": "^5.3.0",
     "bcrypt": "^5.1.1",
     "celebrate": "^15.0.1",
     "cookie-parser": "^1.4.6",

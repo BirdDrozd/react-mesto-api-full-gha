@@ -78,9 +78,6 @@ class Api {
 }
 
 export const configApi = new Api({
-  url: "https://mesto.nomoreparties.co/v1/cohort-68",
-  headers: {
-    authorization: "4fcc9266-4211-4306-96d7-ded80bf1bc2a",
-    "Content-Type": "application/json",
+  baseUrl: "https://api.interactiveservice.nomoredomainsrocks.ru",
   },
-});
+);

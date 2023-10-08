@@ -8,7 +8,7 @@ const { NotFoundError } = require('../errors/NotFoundError');
 const { NotAuthorizedError } = require('../errors/NotAuthorizedError');
 
 const SALT_ROUNDS = 10;
-const JWT_SECRET = 'supersecretstring';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const getUsers = (req, res, next) => userModel.find({})
   .then((result) => res.status(200).send(result))

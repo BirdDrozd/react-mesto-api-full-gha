@@ -5,5 +5,8 @@
   "scripts": {
     "start": "pm2 start ./backend/app.js --name backend && pm2 start ./frontend/server.js --name frontend",
     "stop": "pm2 stop all"
+  },
+  "dependencies": {
+    "express-rate-limit": "^7.1.0"
   }
 }

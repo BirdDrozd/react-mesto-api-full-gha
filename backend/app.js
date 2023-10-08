@@ -11,6 +11,8 @@ const { NotFoundError } = require('./errors/NotFoundError');
 const { login, createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { signupValidation, signinValidation } = require('./middlewares/validation');
+const rateLimit = require("express-rate-limit");
+
 
 
 const {
@@ -33,6 +35,14 @@ db.once('open', () => {
 });
 
 const app = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: "Слишком много запросов с этого IP, попробуйте позже.",
+});
+
+app.use(limiter);
 
 app.use(cors({
   origin: [

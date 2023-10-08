@@ -1,0 +1,9 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "pm2 start frontend backend",
+    "stop": "pm2 stop frontend backend"
+  }
+}

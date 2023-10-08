@@ -11,7 +11,7 @@ module.exports = {
       name   : "frontend",
       script : "./frontend/node_modules/react-scripts/scripts/start.js",
       env: {
-        PORT: 3001
+        PORT: "3001"
       }
     }
   ]

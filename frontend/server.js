@@ -1,3 +1,4 @@
+console.log(123);
 require('dotenv').config();
 const express = require('express');
 const compression = require('compression');
@@ -13,7 +14,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(path.resolve('./build'), 'index.html'));
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
 app.listen(PORT, '0.0.0.0', (err) => {
   if (err) { console.log(err); }

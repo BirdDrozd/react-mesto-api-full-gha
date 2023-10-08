@@ -78,6 +78,6 @@ class Api {
 }
 
 export const configApi = new Api({
-  baseUrl: "https://api.interactiveservice.nomoredomainsrocks.ru",
+  baseUrl: "https://interactiveservice.nomoredomainsrocks.ru",
   },
 );

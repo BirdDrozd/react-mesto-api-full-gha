@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.interactiveservice.nomoredomainsrocks.ru";
+const BASE_URL = "https://interactiveservice.nomoredomainsrocks.ru";
 
 function getResponse(response) {
   if (response.ok) {

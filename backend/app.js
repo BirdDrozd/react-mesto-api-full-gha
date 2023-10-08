@@ -46,8 +46,8 @@ app.use(limiter);
 
 app.use(cors({
   origin: [
-    'http://localhost:3001',
-    'https://localhost:3001',
+    'http://localhost:3000',
+    'https://localhost:3000',
     'http://interactiveservice.nomoredomainsrocks.ru',
     'https://interactiveservice.nomoredomainsrocks.ru',
     'https://api.interactiveservice.nomoredomainsrocks.ru'],

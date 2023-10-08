@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "pm2 start backend && nodemon ./frontend/server.js",
-    "stop": "pm2 stop backend"
+    "start": "pm2 start ./backend/app.js --name backend && pm2 start ./frontend/server.js --name frontend",
+    "stop": "pm2 stop all"
   }
 }

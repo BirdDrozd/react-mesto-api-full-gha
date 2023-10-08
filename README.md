@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.102.202
+IP 158.160.58.198
 
 Frontend https://interactiveservice.nomoredomainsrocks.ru
 

@@ -10,7 +10,7 @@ app.use(compression());
 app.use('/static', express.static(path.resolve(__dirname, 'build/static')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(path.resolve('./build'), 'index.html'));
+  res.sendFile(path.join(path.resolve(__dirname, './build'), 'index.html'));
 });
 
 const PORT = 3001;

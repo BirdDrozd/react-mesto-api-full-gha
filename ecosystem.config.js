@@ -4,6 +4,7 @@ module.exports = {
       name   : "backend",
       script : "./backend/app.js",
       env: {
+        NODE_PORT: "3100",
         BACKEND_PORT: "3000"
       }
     },

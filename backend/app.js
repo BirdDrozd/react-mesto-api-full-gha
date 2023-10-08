@@ -14,7 +14,7 @@ const { signupValidation, signinValidation } = require('./middlewares/validation
 
 
 const {
-  PORT = 3000,
+  BACKEND_PORT = 3000,
   DB_URL = 'mongodb://127.0.0.1:27017/mestodb',
 } = process.env;
 
@@ -78,6 +78,6 @@ const errorHandler = require('./middlewares/error-handler');
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
+app.listen(BACKEND_PORT, () => {
+  console.log(`Сервер запущен на порту ${BACKEND_PORT}`);
 });

@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const cors = require('cors');
+const cors = require('./middlewares/cors');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const cardRouter = require('./routes/cards');
@@ -42,16 +42,7 @@ const limiter = rateLimit({
   message: "Слишком много запросов с этого IP, попробуйте позже.",
 });
 
-app.use(limiter);
-
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://localhost:3000',
-    'http://interactiveservice.nomoredomainsrocks.ru',
-    'https://interactiveservice.nomoredomainsrocks.ru',
-    'https://api.interactiveservice.nomoredomainsrocks.ru'],
-}));
+app.use(cors);
 
 
 app.use(helmet());
@@ -71,6 +62,10 @@ app.use(requestLogger);
 app.post('/signin', signinValidation, login);
 
 app.post('/signup', signupValidation, createUser);
+
+
+app.use(limiter);
+
 
 app.use(auth);
 app.use('/users', userRouter);

@@ -1,45 +1,53 @@
-const BASE_URL = "https://interactiveservice.nomoredomainsrocks.ru";
-
-function getResponse(response) {
-  if (response.ok) {
-    return response.json();
+class Auth {
+  constructor({ url }) {
+    this._url = url;
   }
 
-  return Promise.reject(`Ошибка: ${response.status}`);
+  _getResponse(response) {
+    if (response.ok) {
+      return response.json();
+    }
+
+    return Promise.reject(`Ошибка: ${response.status}`);
+  }
+
+  register(password, email) {
+    return fetch(`${this._url}/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password, email }),
+    }).then((res) => {
+      return this._getResponse(res);
+    });
+  }
+
+  login(password, email) {
+    return fetch(`${this._url}/signin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password, email }),
+    }).then((res) => {
+      return this._getResponse(res);
+    });
+  }
+
+  checkToken(jwt) {
+    return fetch(`${this._url}/users/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
+    }).then((res) => {
+      return this._getResponse(res);
+    });
+  }
 }
 
-export const register = (password, email) => {
-  return fetch(`${BASE_URL}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ password, email }),
-  }).then((res) => {
-    return getResponse(res);
-  });
-};
-
-export const login = (password, email) => {
-  return fetch(`${BASE_URL}/signin`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ password, email }),
-  }).then((res) => {
-    return getResponse(res);
-  });
-};
-
-export const checkToken = (jwt) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${jwt}`,
-    },
-  }).then((res) => {
-    return getResponse(res);
-  });
-};
+export const authApi = new Auth({
+  url: "https://api.sdlmdev.nomoredomains.monster",
+});

@@ -4,6 +4,10 @@ class Api {
     this._headers = headers;
   }
 
+  getToken(jwt) {
+    this._headers.authorization = `Bearer ${jwt}`;
+  }
+
   _getResponse(response) {
     if (response.ok) {
       return response.json();
@@ -78,6 +82,6 @@ class Api {
 }
 
 export const configApi = new Api({
-  baseUrl: "https://interactiveservice.nomoredomainsrocks.ru",
-  },
-);
+  url: "https://interactiveservice.nomoredomainsrocks.ru",
+  headers: {},
+});

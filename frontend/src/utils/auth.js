@@ -49,5 +49,5 @@ class Auth {
 }
 
 export const authApi = new Auth({
-  url: "https://api.sdlmdev.nomoredomains.monster",
+  url: "https://api.interactiveservice.nomoredomainsrocks.ru",
 });

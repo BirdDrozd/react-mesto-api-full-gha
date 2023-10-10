@@ -14,7 +14,9 @@ import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
-import { register, login, checkToken } from "../utils/auth";
+
+
+import { authApi } from "../utils/auth";
 
 function App() {
   const navigate = useNavigate();
@@ -65,7 +67,8 @@ function App() {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      checkToken(jwt)
+      authApi
+        .checkToken(jwt)
         .then((res) => {
           setUserEmail(res.data.email);
           setIsLoggedIn(true);
@@ -174,7 +177,8 @@ function App() {
 
   function handleRegister(password, email) {
     setIsProcessStatus(true);
-    register(password, email)
+    authApi
+      .register(password, email)
       .then(() => {
         setIsAuthStatus(true);
         setPopupMessageStatus({
@@ -197,7 +201,8 @@ function App() {
 
   function handleLogin(password, email) {
     setIsProcessStatus(true);
-    login(password, email)
+    authApi
+      .login(password, email)
       .then((res) => {
         setIsLoggedIn(true);
         setUserEmail(email);
@@ -242,13 +247,13 @@ function App() {
             <Route
               path="/sign-up"
               element={
-                <Register register={handleRegister} isLoggedIn={isLoggedIn} isLoading={isProcessStatus}/>
+                <Register register={handleRegister} isLoggedIn={isLoggedIn} isLoading={isProcessStatus} />
               }
             />
             <Route
               path="/sign-in"
               element={
-                <Login login={handleLogin} isLoggedIn={isLoggedIn} isLoading={isProcessStatus}/>
+                <Login login={handleLogin} isLoggedIn={isLoggedIn} isLoading={isProcessStatus} />
               }
             />
             <Route
@@ -257,18 +262,12 @@ function App() {
             />
           </Routes>
           <Footer />
-          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isProcessStatus}
-          />
-          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isProcessStatus}
-          />
-          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} isLoading={isProcessStatus}
-          />
-          <PopupWithConfirmation isOpen={isConfirmPlacePopupOpen} onClose={closeAllPopups} onSubmit={handleCardDelete} card={selectedCard} isLoading={isProcessStatus}
-          />
-          <ImagePopup card={selectedCard} onClose={closeAllPopups} isOpen={isImagePopupOpen}
-          />
-          <InfoTooltip onClose={closeAllPopups} isOpen={isInfoTooltipOpen} isAuthStatus={isAuthStatus} message={popupMessageStatus}
-          />
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isProcessStatus} />
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isProcessStatus} />
+          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} isLoading={isProcessStatus} />
+          <PopupWithConfirmation isOpen={isConfirmPlacePopupOpen} onClose={closeAllPopups} onSubmit={handleCardDelete} card={selectedCard} isLoading={isProcessStatus} />
+          <ImagePopup card={selectedCard} onClose={closeAllPopups} isOpen={isImagePopupOpen} />
+          <InfoTooltip onClose={closeAllPopups} isOpen={isInfoTooltipOpen} isAuthStatus={isAuthStatus} message={popupMessageStatus} />
         </div>
       </div>
     </CurrentUserContext.Provider>

@@ -82,6 +82,6 @@ class Api {
 }
 
 export const configApi = new Api({
-  url: "https://interactiveservice.nomoredomainsrocks.ru",
+  url: "https://api.interactiveservice.nomoredomainsrocks.ru",
   headers: {},
 });

@@ -19,6 +19,8 @@ class Api {
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
+      mode: 'cors',
+      credentials: 'include'
     }).then(this._getResponse);
   }
 

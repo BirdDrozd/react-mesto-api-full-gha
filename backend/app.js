@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cors = require('./middlewares/cors');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const cardRouter = require('./routes/cards');
@@ -46,6 +47,7 @@ app.use(cors);
 
 
 app.use(helmet());
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(express.json());

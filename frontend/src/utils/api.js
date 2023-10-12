@@ -1,7 +1,10 @@
 class Api {
   constructor({ url, headers }) {
     this._url = url;
-    this._headers = headers;
+    this._headers = {
+      'Content-Type': 'application/json',
+      ...headers
+    };
     this._options = {
       credentials: 'include'
     };

@@ -14,9 +14,9 @@ function PageWithForm({
   return (
     <div className="page-form">
       <h2 className="page-form__title">{title}</h2>
-      <form name={name} onSubmit={onSubmit} noValidate>
+      <form autoComplete="off" name={name} onSubmit={onSubmit} noValidate>
         <fieldset className="page-form__set">
-          <input id="email" type="text" placeholder="Email" className={`page-form__input ${!errors.email ? "" : "popup__input_type_error"
+          <input id="email" type="email" placeholder="Email" className={`page-form__input ${!errors.email ? "" : "popup__input_type_error"
             }`} name="email" autoComplete="off" minLength="5" maxLength="40" required value={values.email || ""} onChange={handleInputChange}/>
           <span className="popup__input-error email-input-error">
             {errors.email}

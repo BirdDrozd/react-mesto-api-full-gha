@@ -42,6 +42,7 @@ class Auth {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwt}`,
       },
+      credentials: 'include',
     }).then((res) => {
       return this._getResponse(res);
     });

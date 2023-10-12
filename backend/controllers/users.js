@@ -94,6 +94,8 @@ const login = (req, res, next) => {
       }, JWT_SECRET, { expiresIn: '1w' });
 
       res.cookie('token', token, {
+        domain: '.interactiveservice.nomoredomainsrocks.ru',
+        secure: true,
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
       });

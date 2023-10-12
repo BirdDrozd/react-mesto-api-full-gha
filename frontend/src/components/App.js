@@ -14,8 +14,6 @@ import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
-
-
 import { authApi } from "../utils/auth";
 
 function App() {

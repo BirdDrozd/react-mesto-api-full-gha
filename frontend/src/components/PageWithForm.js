@@ -17,11 +17,11 @@ function PageWithForm({
       <form autoComplete="off" name={name} onSubmit={onSubmit} noValidate>
         <fieldset className="page-form__set">
           <input id="email" type="email" placeholder="Email" className={`page-form__input ${!errors.email ? "" : "popup__input_type_error"
-            }`} name="email" autoComplete="off" minLength="5" maxLength="40" required value={values.email || ""} onChange={handleInputChange}/>
+            }`} name="email" autoComplete="none" minLength="5" maxLength="40" required value={values.email || ""} onChange={handleInputChange}/>
           <span className="popup__input-error email-input-error">
             {errors.email}
           </span>
-          <input id="password" type="password" placeholder="Пароль" className={`page-form__input ${!errors.password ? "" : "popup__input_type_error"}`} name="password" autoComplete="off" required value={values.password || ""} onChange={handleInputChange}/>
+          <input id="password" type="password" placeholder="Пароль" className={`page-form__input ${!errors.password ? "" : "popup__input_type_error"}`} name="password" autoComplete="none" required value={values.password || ""} onChange={handleInputChange}/>
 
           <span className="popup__input-error popup__input-error_password password-input-error">
             {errors.password}

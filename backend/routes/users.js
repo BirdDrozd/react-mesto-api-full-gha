@@ -10,7 +10,7 @@ const {
   getCurrentUser,
 } = require('../controllers/users');
 
-const urlPattern = /^((http|https):\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,6})+[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]*$/;
+const urlPattern = /^((http|https):\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,6})+[a-zA-Z0-9-._~:\/?#[\]%@!$&'()*+,;=]*$/;
 
 router.get('/me', getCurrentUser);
 

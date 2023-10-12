@@ -14,8 +14,6 @@ module.exports = (req, res, next) => {
 
   res.header('Access-Control-Allow-Credentials', true);
 
-  console.log(origin);
-
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }

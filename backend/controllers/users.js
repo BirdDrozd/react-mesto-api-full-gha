@@ -58,7 +58,7 @@ const updateUserById = (req, res, next) => {
       if (r === null) {
         throw new NotFoundError('Пользователь не найден');
       }
-      return res.status(200).send(req.body);
+      return res.status(200).send(r);
     })
     .catch((err) => next(err));
 };

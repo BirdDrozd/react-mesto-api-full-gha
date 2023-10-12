@@ -131,7 +131,10 @@ function App() {
     configApi
       .setUserData(userData)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser((user) => ({
+          ...user,
+          ...res
+        }));
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -155,7 +158,10 @@ function App() {
     configApi
       .changeAvatar(data)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser((user) => ({
+          ...user,
+          ...res
+        }));
         closeAllPopups();
       })
       .catch((err) => console.log(err))

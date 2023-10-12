@@ -2,6 +2,9 @@ class Api {
   constructor({ url, headers }) {
     this._url = url;
     this._headers = headers;
+    this._options = {
+      credentials: 'include'
+    };
   }
 
   getToken(jwt) {
@@ -19,14 +22,14 @@ class Api {
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
-      mode: 'cors',
-      credentials: 'include'
+      ...this._options
     }).then(this._getResponse);
   }
 
   getUserData() {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
+      ...this._options
     }).then(this._getResponse);
   }
 
@@ -35,6 +38,7 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(profileData),
+      ...this._options
     }).then(this._getResponse);
   }
 
@@ -43,6 +47,7 @@ class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(cardData),
+      ...this._options
     }).then(this._getResponse);
   }
 
@@ -50,6 +55,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
+      ...this._options
     }).then(this._getResponse);
   }
 
@@ -57,6 +63,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
+      ...this._options
     }).then(this._getResponse);
   }
 
@@ -64,6 +71,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
+      ...this._options
     }).then(this._getResponse);
   }
 
@@ -72,6 +80,7 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(link),
+      ...this._options
     }).then(this._getResponse);
   }
 

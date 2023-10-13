@@ -1,6 +1,10 @@
 class Auth {
   constructor({ url }) {
     this._url = url;
+
+    this._options = {
+      credentials: 'include'
+    };
   }
 
   _getResponse(response) {
@@ -17,6 +21,7 @@ class Auth {
       headers: {
         "Content-Type": "application/json",
       },
+      ...this._options,
       body: JSON.stringify({ password, email }),
     }).then((res) => {
       return this._getResponse(res);
@@ -29,6 +34,7 @@ class Auth {
       headers: {
         "Content-Type": "application/json",
       },
+      ...this._options,
       body: JSON.stringify({ password, email }),
     }).then((res) => {
       return this._getResponse(res);
@@ -42,7 +48,7 @@ class Auth {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwt}`,
       },
-      credentials: 'include',
+      ...this._options,
     }).then((res) => {
       return this._getResponse(res);
     });

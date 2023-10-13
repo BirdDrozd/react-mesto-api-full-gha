@@ -94,7 +94,6 @@ const login = (req, res, next) => {
       }, JWT_SECRET, { expiresIn: '1w' });
 
       res.cookie('token', token, {
-        secure: true,
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
       });

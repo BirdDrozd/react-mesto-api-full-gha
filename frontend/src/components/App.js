@@ -15,6 +15,11 @@ import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
 import { authApi } from "../utils/auth";
+import {
+  register,
+  login,
+  checkToken,
+} from "../utils/auth";
 
 function App() {
   const navigate = useNavigate();
